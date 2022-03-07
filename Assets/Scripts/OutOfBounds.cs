@@ -12,6 +12,7 @@ public class OutOfBounds : MonoBehaviour
     private FirstPersonMovement _playerMove;
     private Jump _playerJump;
     private Crouch _playerCrouch;
+    [SerializeField] private AudioSource faint;
 
     private void Start()
     {
@@ -39,6 +40,7 @@ public class OutOfBounds : MonoBehaviour
 
     private IEnumerator FadeOut()
     {
+        faint.Play();
         TogglePlayerMovement(false);
         canvasAnimator.SetBool(FadeOutBool, true);
         yield return new WaitForSeconds(0.5f);
